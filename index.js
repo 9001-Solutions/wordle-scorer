@@ -81,6 +81,7 @@ for (const dailyWord of [...allWords.dailyWords, ...allWords.guessableWords]) {
       confirmedLetters.pos2,
       confirmedLetters.pos3,
       confirmedLetters.pos4,
+      ...nebulousLetters.map((nl) => nl.letter),
     ].filter((letter) => letter === noMore).length;
 
     if (
