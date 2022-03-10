@@ -14,7 +14,10 @@ const confirmedLetters = {
 };
 
 // const nebulousLetters = [{ letter: "a", notIn: [0] }];
-const nebulousLetters = [];
+const nebulousLetters = [
+  // { letter: "s", notIn: [0, 2] },
+  // { letter: "p", notIn: [0] },
+];
 const wrongLetters = [];
 const noMoreLetters = [];
 //////////////////////////////
@@ -84,9 +87,11 @@ for (const dailyWord of [...allWords.dailyWords, ...allWords.guessableWords]) {
       dailyWord.split("").filter((letter) => letter === noMore).length >
       existingCount
     ) {
-      continue;
+      shouldSkip = true;
+      break;
     }
   }
+  if (shouldSkip) continue;
 
   if (isPossibleDailyWord(dailyWord)) {
     remainingDailyWords.push(dailyWord);
